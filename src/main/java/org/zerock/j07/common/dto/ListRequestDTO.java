@@ -20,16 +20,18 @@ public class ListRequestDTO {
     public int size = 10;
 
     private String keyword;
-    //page값은 1부터 시작해야한다. 조건 default값
 
     public void setPage(int page) {
+
         this.page = page <= 0 ? 1 :page;
     }
 
     public void setSize(int size) {
+
         this.size = size <= 10 ? 10 :size;
     }
     public Pageable getPageable(){
+
         return PageRequest.of(this.page -1 , this.size);
     }
 }

@@ -11,8 +11,8 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-//@ToString(exclude = {"board"})
-@ToString
+@ToString(exclude = {"board"})
+//@ToString
 public class Reply extends BaseEntity {
 
     @Id

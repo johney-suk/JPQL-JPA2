@@ -22,17 +22,19 @@ public class BoardServiceImpl implements BoardService {
 
     private final BoardRepository boardRepository;
 
+
     @Override
     public ListResponseDTO<ListBoardDTO> getList(BoardListRequestDTO requestDTO) {
 
+
         Pageable pageable = requestDTO.getPageable();
 
-        Page<Object[]> result = boardRepository.getSearchList(requestDTO.getType(),requestDTO.getKeyword(),pageable);
+        Page<Object[]> result = boardRepository.getSearchList(requestDTO.getType(), requestDTO.getKeyword(), pageable);
 
         List<ListBoardDTO> boardDTOList =
-                result.getContent().stream().map(arr->arrToDTO(arr)).collect(Collectors.toList());
+                result.getContent().stream().map(arr -> arrToDTO(arr)).collect(Collectors.toList());
 
-        PageMaker pageMaker = new PageMaker(requestDTO.getPage(),requestDTO.getSize(),(int)result.getTotalElements());
+        PageMaker pageMaker = new PageMaker(requestDTO.getPage(), requestDTO.getSize(), (int) result.getTotalElements());
 
         log.info(result);
 
